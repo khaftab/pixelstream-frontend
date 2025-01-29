@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HLS Video Player</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  </head>
+  <body>
+    <div style="max-width: 800px; margin: 0 auto">
+      <video id="video" controls style="width: 100%"></video>
+    </div>
+
+    <script>
+      const video = document.getElementById("video");
+      const videoSrc =
+        "https://cdn.streamscale.aksdev.me/666d55ed785875a3ffe67865/BigBunnyTrailer/master.m3u8";
+
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          video.play();
+        });
+      } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        // Native HLS support (Safari)
+        video.src = videoSrc;
+        video.addEventListener("loadedmetadata", () => {
+          video.play();
+        });
+      }
+    </script>
+  </body>
+</html>
