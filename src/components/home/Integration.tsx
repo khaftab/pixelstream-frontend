@@ -138,8 +138,8 @@ export default VideoPlayer;`,
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-blue-100">Simple Integration</h2>
           <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto">
-            Choose your preferred integration method. Our player works seamlessly with both HTML and
-            React.
+            Choose your preferred integration method. It works seamlessly with both HTML, React, and
+            other frameworks.
           </p>
         </div>
 
@@ -191,18 +191,21 @@ export default VideoPlayer;`,
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {[
               {
-                title: "Responsive",
-                description: "Automatically adapts to any screen size",
+                title: "Adaptive Bitrate Streaming",
+                description:
+                  "Automatically adjusts video quality based on the viewer's network conditions for smooth playback.",
               },
               {
-                title: "Customizable",
-                description: "Easy to style and customize to match your brand",
+                title: "Efficient Bandwidth Usage",
+                description:
+                  "Optimizes bandwidth consumption by delivering the best possible quality for the available network speed.",
               },
               {
-                title: "Cross-Platform",
-                description: "Works on all modern browsers and devices",
+                title: "Wide Compatibility",
+                description:
+                  "Supported on a variety of devices and modern browsers, ensuring broad accessibility.",
               },
-            ].map((feature, index) => (
+            ].map((benefit, index) => (
               <div
                 key={index}
                 className="bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-800 p-4 md:p-6"
@@ -210,8 +213,8 @@ export default VideoPlayer;`,
                 <div className="w-8 h-8 rounded-full bg-gradient-to-r from-emerald-400/20 to-yellow-300/20 flex items-center justify-center mb-3">
                   <div className="w-2 h-2 rounded-full bg-emerald-400" />
                 </div>
-                <h4 className="text-white font-medium mb-2">{feature.title}</h4>
-                <p className="text-gray-400 text-sm">{feature.description}</p>
+                <h4 className="text-white font-medium mb-2">{benefit.title}</h4>
+                <p className="text-gray-400 text-sm">{benefit.description}</p>
               </div>
             ))}
           </div>

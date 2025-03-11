@@ -1,5 +1,6 @@
 import React from "react";
 import { Zap, Layout, Shield, Sliders, Cloud, Code2, HandCoins, MonitorPlay } from "lucide-react";
+import Link from "next/link";
 
 interface FeatureCardProps {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -22,7 +23,8 @@ const Features = () => {
     {
       icon: Zap,
       title: "Transcode Fast",
-      description: "Each video of 1GB or 1hr is transcoded in multiple formats within 30 minutes",
+      description:
+        "Each video of 5MB or 45 sec is transcoded within 12 seconds (excluding fargate provisioning time).",
     },
     {
       icon: HandCoins,
@@ -37,7 +39,7 @@ const Features = () => {
   ];
 
   return (
-    <section className="py-16 px-4 relative overflow-hidden">
+    <section className="bg-black py-16 px-4 relative overflow-hidden">
       {/* Background Blur Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -left-[10%] top-[20%] w-[40%] h-[40%] rounded-full opacity-10 blur-[100px] bg-emerald-500" />
@@ -67,12 +69,16 @@ const Features = () => {
         {/* Bottom CTA */}
         <div className="mt-20 text-center">
           <div className="inline-flex p-1 rounded-full bg-gray-900/80 backdrop-blur-sm border border-gray-800">
-            <button className="px-6 py-3 rounded-full text-sm font-medium text-gray-400 hover:text-white transition-colors">
-              View Documentation
-            </button>
-            <button className="px-6 py-3 rounded-full bg-gradient-to-r from-emerald-400 to-yellow-300 text-black text-sm font-medium hover:opacity-90 transition-opacity">
-              Start Free Trial
-            </button>
+            <Link href="/signup">
+              <button className="px-6 py-3 rounded-full text-sm font-medium text-gray-400 hover:text-white transition-colors">
+                Sign up
+              </button>
+            </Link>
+            <Link href="/dashboard">
+              <button className="px-6 py-3 rounded-full bg-gradient-to-r from-emerald-400 to-yellow-300 text-black text-sm font-medium hover:opacity-90 transition-opacity">
+                Dashboard
+              </button>
+            </Link>
           </div>
         </div>
       </div>

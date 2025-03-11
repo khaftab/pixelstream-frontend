@@ -33,78 +33,146 @@ export default function WorkflowAnimated({ className }: { className?: string }) 
   const div6Ref = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="flex justify-center items-center flex-col px-4">
-      <h1 className="text-blue-100 text-4xl mb-14">Quick solutions, less cost</h1>
+    <div className="bg-black flex justify-center items-center flex-col px-4 w-full">
+      <h1 className="text-blue-100 text-4xl mb-14 text-center">Quick solutions, less cost</h1>
       <div
         className={cn(
           `relative flex w-full max-w-[600px] items-center
-          justify-center overflow-hidden rounded-lg border border-gray-800 p-10 md:shadow-xl`,
+          justify-center overflow-hidden rounded-lg border border-gray-800 p-4 md:p-10 md:shadow-xl`,
           className
         )}
         ref={containerRef}
       >
         <div
           className="flex h-full w-full flex-row items-stretch justify-between
-          gap-10"
+          gap-2 md:gap-10"
         >
           <div className="flex flex-col justify-center">
-            <Circle ref={div1Ref}>
-              <Icons.user />
+            <Circle ref={div1Ref} className="h-12 w-12 md:h-14 md:w-14">
+              <Icons.user className="scale-95 md:scale-100" />
             </Circle>
           </div>
           <div className="flex flex-col justify-center">
-            <Circle ref={div2Ref} className="h-16 w-16">
-              <Icons.nodejs />
+            <Circle ref={div2Ref} className="h-12 w-12 md:h-14 md:w-14">
+              <Icons.nodejs className="scale-95 md:scale-100" />
             </Circle>
           </div>
-          <div className="flex flex-col justify-center gap-2">
-            <Circle ref={div3Ref}>
-              <Icons.awss3 />
+          <div className="flex flex-col justify-center gap-1 md:gap-2">
+            <Circle ref={div3Ref} className="h-12 w-12 md:h-14 md:w-14">
+              <Icons.awss3 className="scale-95 md:scale-100" />
             </Circle>
-            <Circle ref={div4Ref}>
-              <Icons.awsEcr />
+            <Circle ref={div4Ref} className="h-12 w-12 md:h-14 md:w-14">
+              <Icons.awsEcr className="scale-95 md:scale-100" />
             </Circle>
-            <Circle ref={div5Ref}>
-              <Icons.awsEcs />
+            <Circle ref={div5Ref} className="h-12 w-12 md:h-14 md:w-14">
+              <Icons.awsEcs className="scale-95 md:scale-100" />
             </Circle>
-            <Circle ref={div6Ref}>
-              <Icons.cloudflare />
+            <Circle ref={div6Ref} className="h-12 w-12 md:h-14 md:w-14">
+              <Icons.cloudflare className="scale-95 md:scale-100" />
             </Circle>
           </div>
         </div>
 
         {/* AnimatedBeams */}
-        <AnimatedBeam containerRef={containerRef} fromRef={div1Ref} toRef={div2Ref} duration={3} />
-        <AnimatedBeam containerRef={containerRef} fromRef={div3Ref} toRef={div2Ref} duration={3} />
-        <AnimatedBeam containerRef={containerRef} fromRef={div3Ref} toRef={div4Ref} duration={3} />
-        <AnimatedBeam containerRef={containerRef} fromRef={div4Ref} toRef={div5Ref} duration={3} />
-        <AnimatedBeam containerRef={containerRef} fromRef={div5Ref} toRef={div6Ref} duration={3} />
-        <AnimatedBeam containerRef={containerRef} fromRef={div6Ref} toRef={div2Ref} duration={3} />
+        <AnimatedBeam
+          containerRef={containerRef as React.RefObject<HTMLElement>}
+          fromRef={div1Ref as React.RefObject<HTMLElement>}
+          toRef={div2Ref as React.RefObject<HTMLElement>}
+          duration={3}
+        />
+        <AnimatedBeam
+          containerRef={containerRef as React.RefObject<HTMLElement>}
+          fromRef={div3Ref as React.RefObject<HTMLElement>}
+          toRef={div2Ref as React.RefObject<HTMLElement>}
+          duration={3}
+        />
+        <AnimatedBeam
+          containerRef={containerRef as React.RefObject<HTMLElement>}
+          fromRef={div3Ref as React.RefObject<HTMLElement>}
+          toRef={div4Ref as React.RefObject<HTMLElement>}
+          duration={3}
+        />
+        <AnimatedBeam
+          containerRef={containerRef as React.RefObject<HTMLElement>}
+          fromRef={div4Ref as React.RefObject<HTMLElement>}
+          toRef={div5Ref as React.RefObject<HTMLElement>}
+          duration={3}
+        />
+        <AnimatedBeam
+          containerRef={containerRef as React.RefObject<HTMLElement>}
+          fromRef={div5Ref as React.RefObject<HTMLElement>}
+          toRef={div6Ref as React.RefObject<HTMLElement>}
+          duration={3}
+        />
+        <AnimatedBeam
+          containerRef={containerRef as React.RefObject<HTMLElement>}
+          fromRef={div6Ref as React.RefObject<HTMLElement>}
+          toRef={div2Ref as React.RefObject<HTMLElement>}
+          duration={3}
+        />
       </div>
     </div>
   );
 }
 
 const Icons = {
-  awss3: () => (
-    <Image width={40} height={40} src="/s3.png" className="rounded-full" alt="Amazon S3" />
+  awss3: ({ className }: { className?: string }) => (
+    <Image
+      width={40}
+      height={40}
+      src="/s3.png"
+      className={cn("rounded-full", className)}
+      alt="Amazon S3"
+    />
   ),
-  awsEcr: () => (
-    <Image width={40} height={40} src="/ecr.png" className="rounded-full" alt="Amazon ECR" />
+  awsEcr: ({ className }: { className?: string }) => (
+    <Image
+      width={40}
+      height={40}
+      src="/ecr.png"
+      className={cn("rounded-full", className)}
+      alt="Amazon ECR"
+    />
   ),
-  awsSqs: () => (
-    <Image width={40} height={40} src="/sqs.png" className="rounded-full" alt="Amazon SQS" />
+  awsSqs: ({ className }: { className?: string }) => (
+    <Image
+      width={40}
+      height={40}
+      src="/sqs.png"
+      className={cn("rounded-full", className)}
+      alt="Amazon SQS"
+    />
   ),
-  awsEcs: () => (
-    <Image width={40} height={40} src="/ecs.png" className="rounded-full" alt="Amazon ECS" />
+  awsEcs: ({ className }: { className?: string }) => (
+    <Image
+      width={40}
+      height={40}
+      src="/ecs.png"
+      className={cn("rounded-full", className)}
+      alt="Amazon ECS"
+    />
   ),
-  nodejs: () => (
-    <Image width={40} height={40} src="/nodejs.png" className="rounded-full" alt="Node.js" />
+  nodejs: ({ className }: { className?: string }) => (
+    <Image
+      width={40}
+      height={40}
+      src="/nodejs.png"
+      className={cn("rounded-full", className)}
+      alt="Node.js"
+    />
   ),
-  cloudflare: () => (
-    <Image width={40} height={40} src="/cloudflare.png" className="rounded-full" alt="Cloudflare" />
+  cloudflare: ({ className }: { className?: string }) => (
+    <Image
+      width={40}
+      height={40}
+      src="/cloudflare.png"
+      className={cn("rounded-full", className)}
+      alt="Cloudflare"
+    />
   ),
-  user: () => (
+  // Apply similar pattern to other icon components
+  // ...
+  user: ({ className }: { className?: string }) => (
     <svg
       width="24"
       height="24"
@@ -113,6 +181,7 @@ const Icons = {
       stroke="#000000"
       strokeWidth="2"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
       <circle cx="12" cy="7" r="4" />

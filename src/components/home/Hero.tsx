@@ -1,9 +1,10 @@
 import React from "react";
 import VideoPlayer from "../VideoPlayer";
+import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="min-h-screen bg-blackk flex items-center justify-center py-16 relative overflow-hidden">
+    <div className="min-h-[calc(100vh-4rem)] bg-black flex items-center justify-center py-16 relative overflow-hidden">
       {/* Blur effect background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -left-[10%] top-[20%] w-[40%] h-[40%] rounded-full opacity-10 blur-[100px] bg-emerald-500" />
@@ -26,15 +27,19 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <button className="bg-gradient-to-r from-emerald-400 to-yellow-300 text-black font-bold text-lg py-4 px-8 rounded-lg hover:opacity-90 transition-all duration-300">
-              Start Free Trial
-            </button>
-            <button className="border border-gray-800 text-gray-300 font-semibold text-lg py-4 px-8 rounded-lg hover:bg-gray-900 transition-all duration-300">
-              View Pricing
-            </button>
+            <Link href="/dashboard">
+              <button className="bg-gradient-to-r from-emerald-400 to-yellow-300 text-black font-bold text-lg py-4 px-8 rounded-lg hover:opacity-90 transition-all duration-300 tracking-wider">
+                Dashboard
+              </button>
+            </Link>
+            <Link href="/signup">
+              <button className="border border-gray-800 text-gray-300 font-semibold text-lg py-4 px-8 rounded-lg hover:bg-gray-900 transition-all duration-300 tracking-wider">
+                Sign up
+              </button>
+            </Link>
           </div>
 
-          <div className="mt-8 flex items-center gap-8 text-sm text-gray-400 justify-center lg:justify-start">
+          <div className="mt-8 flex flex-col md:flex-row items-center gap-8 text-sm text-gray-400 justify-center lg:justify-start">
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                 <path
@@ -53,7 +58,7 @@ const Hero = () => {
                   clipRule="evenodd"
                 />
               </svg>
-              <span>Cancel anytime</span>
+              <span>Free 6 video transcodes on signup</span>
             </div>
           </div>
         </div>
@@ -70,20 +75,12 @@ const Hero = () => {
               <div className="text-sm text-gray-400">demo-video.mp4</div>
             </div>
             <div className="aspect-w-16 aspect-h-9">
-              {/* <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Sample Video"
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              /> */}
-              <VideoPlayer src="https://cdn.streamscale.aksdev.me/666d55ed785875a3ffe67865/BigBunnyTrailer/master.m3u8" />
+              <VideoPlayer
+                src="https://pub-edb9d66a566a409ab1bf346a0f47bb12.r2.dev/sample-video/master.m3u8"
+                poster="./thumbnail.png"
+              />
             </div>
-            <div className="p-4 bg-gray-900">
-              {/* <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                <div className="w-2/3 h-full bg-gradient-to-r from-emerald-400 to-yellow-300" />
-              </div> */}
-            </div>
+            <div className="p-4 bg-gray-9000"></div>
           </div>
         </div>
       </div>
