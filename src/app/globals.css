@@ -80,3 +80,32 @@ body {
   @apply backdrop-blur-[2px] bg-gradient-to-br from-0% from-[hsl(var(--muted))] to-20% to-transparent !important;
   /* display: none !important; */
 }
+
+.faded-bg {
+  @apply backdrop-blur-[2px] relative overflow-hidden !important;
+  position: relative;
+}
+
+.faded-bg::before,
+.faded-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 100%;
+  opacity: 0.1;
+  filter: blur(100px);
+  width: 40%;
+  height: 40%;
+  z-index: -1;
+}
+
+.faded-bg::before {
+  left: 10%;
+  top: 20%;
+  background: rgb(16, 185, 129); /* emerald-500 */
+}
+
+.faded-bg::after {
+  right: 10%;
+  top: 40%;
+  background: rgb(253, 224, 71); /* yellow-300 */
+}

@@ -44,7 +44,7 @@ export default function AuthForm({ isSigninPage }: AuthFormProps) {
 
   return (
     <>
-      <Card className="mx-auto max-w-sm w-full fadedd-bg backdrop-blur-[2px] my-16 font-sans">
+      <Card className="mx-auto max-w-sm w-full faded-bg backdrop-blur-[2px] my-16 font-sans">
         {isSigninPage ? (
           <CardHeader>
             <CardTitle className="text-2xl">Login</CardTitle>
@@ -56,10 +56,7 @@ export default function AuthForm({ isSigninPage }: AuthFormProps) {
             <CardDescription>Enter your information to create an account</CardDescription>
           </CardHeader>
         )}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute left-[10%] top-[20%] w-[40%] h-[40%] rounded-full opacity-10 blur-[100px] bg-emerald-500" />
-          <div className="absolute right-[10%] top-[40%] w-[40%] h-[40%] rounded-full opacity-10 blur-[100px] bg-yellow-300" />
-        </div>
+
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
