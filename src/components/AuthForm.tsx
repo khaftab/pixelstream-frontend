@@ -43,63 +43,68 @@ export default function AuthForm({ isSigninPage }: AuthFormProps) {
   }
 
   return (
-    <Card className="mx-auto max-w-sm w-full faded-bg backdrop-blur-[2px] my-16 font-sans">
-      {isSigninPage ? (
-        <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
-          <CardDescription>Enter your email below to login to your account</CardDescription>
-        </CardHeader>
-      ) : (
-        <CardHeader>
-          <CardTitle className="text-2xl">Sign Up</CardTitle>
-          <CardDescription>Enter your information to create an account</CardDescription>
-        </CardHeader>
-      )}
-
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="grid gap-2">
+    <>
+      <Card className="mx-auto max-w-sm w-full fadedd-bg backdrop-blur-[2px] my-16 font-sans">
+        {isSigninPage ? (
+          <CardHeader>
+            <CardTitle className="text-2xl">Login</CardTitle>
+            <CardDescription>Enter your email below to login to your account</CardDescription>
+          </CardHeader>
+        ) : (
+          <CardHeader>
+            <CardTitle className="text-2xl">Sign Up</CardTitle>
+            <CardDescription>Enter your information to create an account</CardDescription>
+          </CardHeader>
+        )}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute left-[10%] top-[20%] w-[40%] h-[40%] rounded-full opacity-10 blur-[100px] bg-emerald-500" />
+          <div className="absolute right-[10%] top-[40%] w-[40%] h-[40%] rounded-full opacity-10 blur-[100px] bg-yellow-300" />
+        </div>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
               <div className="grid gap-2">
-                <CustomFormField
-                  type="text"
-                  form={form}
-                  name="email"
-                  label="Email"
-                  placeholder="john@example.com"
-                />
+                <div className="grid gap-2">
+                  <CustomFormField
+                    type="text"
+                    form={form}
+                    name="email"
+                    label="Email"
+                    placeholder="john@example.com"
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <CustomFormField
+                    form={form}
+                    name="password"
+                    label="Password"
+                    placeholder="john1234"
+                    type="password"
+                  />
+                </div>
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {isSigninPage ? "Sign In" : "Sign Up"}
+                </Button>
               </div>
-              <div className="grid gap-2">
-                <CustomFormField
-                  form={form}
-                  name="password"
-                  label="Password"
-                  placeholder="john1234"
-                  type="password"
-                />
-              </div>
-              <Button type="submit" className="w-full" disabled={loading}>
-                {isSigninPage ? "Sign In" : "Sign Up"}
-              </Button>
-            </div>
-            {isSigninPage ? (
-              <div className="mt-4 text-center text-sm text-muted-foreground">
-                Don&apos;t have an account?{" "}
-                <Link href={"/signup"} className="underline">
-                  Sign up
-                </Link>
-              </div>
-            ) : (
-              <div className="mt-4 text-center text-sm text-muted-foreground">
-                Already have an account?{" "}
-                <Link href={"/signin"} className="underline">
-                  Sign in
-                </Link>
-              </div>
-            )}
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+              {isSigninPage ? (
+                <div className="mt-4 text-center text-sm text-muted-foreground">
+                  Don&apos;t have an account?{" "}
+                  <Link href={"/signup"} className="underline">
+                    Sign up
+                  </Link>
+                </div>
+              ) : (
+                <div className="mt-4 text-center text-sm text-muted-foreground">
+                  Already have an account?{" "}
+                  <Link href={"/signin"} className="underline">
+                    Sign in
+                  </Link>
+                </div>
+              )}
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
+    </>
   );
 }

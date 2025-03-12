@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Upload, Loader2, File, VideoIcon } from "lucide-react";
+import { Upload, File, VideoIcon } from "lucide-react";
 import { apiHandler } from "@/lib/api";
 import axios from "axios";
 import { Card, CardContent } from "./ui/card";

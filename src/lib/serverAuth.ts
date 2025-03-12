@@ -1,4 +1,3 @@
-// lib/server-auth.ts
 import { cookies } from "next/headers";
 
 export async function getServerUser() {

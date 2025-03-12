@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { Card, CardHeader, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Upload, Play, Copy, Check, AlertCircle, Video, Loader } from "lucide-react";
-import { toast } from "@/hooks/use-toast";
+import { Card } from "@/components/ui/card";
 import Progress from "@/components/Progress";
 import FileUpload from "./FileUpload";
 import ProcessedVideoList from "./ProcessedVideoList";
 
-const VideoManagementPage = () => {
+const VideoManagement = () => {
   const [isUploading, setIsUploading] = useState<null | boolean>(null);
   const [s3UploadProgress, setS3UploadProgress] = useState<number>(0);
   const [safeFilename, setSafeFilename] = useState("");
@@ -25,7 +22,7 @@ const VideoManagementPage = () => {
   };
 
   return (
-    <div className="container mx-auto lg:p-8 max-w-7xl">
+    <div className="container mx-auto lg:p-8 max-w-7xl p-4">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
         {/* Left Column - Upload and Progress */}
         <div className="flex flex-col justify-between gap-6">
@@ -84,7 +81,4 @@ const VideoManagementPage = () => {
   );
 };
 
-export default VideoManagementPage;
-/** 
-This is has inconsistent delay b/w stages.  The main reason we are adding those 600  ms delay to complete the bar and then wait a fraction then go to next stage.  initialupload => transcoding. This stage is perfect because intialUpload fulfills 100% bar because s3 returns 100% at the end of uploding. So, the time 600 is not used for complete the bar. Rather, holds the next stage (transcoding) for that amount of time.   Now, for the transcoding => uploading stage, this data comes from backend by polling redis db. Here, it is not necessary to returns 100% progress for transcoding. It maybe 20% then, before showing it to 100%, it sends uploding to 2%. Now, here the problem lies, in  600 ms it needs to complete the bar 20 to 100% and doing the it rans out of that time. That's why there is a instant movement of procedding to next stage barely completing the progress and a small pause.  Now, if I increase the time 600 to 1s, it will somehow solve the issue. But, not perfectly. because, then initialupload will always wait 1 sec before going to next stage. But, transcoding stage will have to wait less the 1 sec as it counts the time to complete the bar. So, the time gap will be inconsistent b/w the stages.  Now, the solution what I can think is that, the time it takes to complete the bar, should be calculated and added to 600 ms.That way it will be same pause b/w each stages. If, a stage has 100% from the serveer itself, then will no need to wait for only 600 ms. Same with if server send s 20% and move to next stage, it should add the time to take to 20% to 100% and then add 600 ms. That way it will be perfect. what you think?
-*/
+export default VideoManagement;

@@ -7,12 +7,9 @@ import { apiHandler } from "@/lib/api";
 import { format, parseISO } from "date-fns";
 import { PaginationControl } from "./PaginationControl";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import VideoModal from "./VideoModal";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,

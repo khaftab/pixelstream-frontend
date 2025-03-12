@@ -1,10 +1,8 @@
-// context/auth-context.tsx
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { apiHandler } from "@/lib/api";
 import { useRouter } from "next/navigation";
-import { instance } from "@/lib/apiInstance";
 
 type User = {
   id: string;

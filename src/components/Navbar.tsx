@@ -17,12 +17,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, signOut } = useAuth();
   console.log(user);
-  // const signOut = async () => {
-  //   await apiHandler({
-  //     method: "GET",
-  //     url: "/api/users/signout",
-  //   });
-  // };
+
   let navLinks = [
     { href: "/", label: "Home" },
     { href: "/signin", label: "Signin" },
