@@ -163,19 +163,13 @@ function TranscodeProgress({
       }
     };
 
-    eventSource.addEventListener("done", (event) => {
-      const data = JSON.parse(event.data);
-      console.log("Done event received", data);
-      eventSource.close(); // Gracefully close connection from client
-    });
-
     eventSource.onerror = (error) => {
-      console.log("SSE Error:", error);
+      // this triggered when the SSE connection fails or the server terminates the connection even without any error. Since, the server closes the connection when the process is done, we can ignore this error.
       eventSource.close();
-      setProgressData((prev) => ({
-        ...prev,
-        status: "failed",
-      }));
+      // setProgressData((prev) => ({
+      //   ...prev,
+      //   status: "failed",
+      // }));
     };
 
     return () => {
