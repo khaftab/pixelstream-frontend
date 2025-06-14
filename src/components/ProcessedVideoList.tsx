@@ -42,6 +42,8 @@ const ProcessedVideoList = ({ isComplete }: { isComplete: boolean }) => {
 
   const handleCopy = async (url: string, id: string) => {
     try {
+      console.log("Copying URL:", url);
+
       await navigator.clipboard.writeText(url);
       setCopiedId(id);
       toast({

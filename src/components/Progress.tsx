@@ -127,6 +127,8 @@ function TranscodeProgress({
     eventSource.onmessage = async (event) => {
       try {
         const data = JSON.parse(event.data);
+        console.log("SSE Data Received:", data);
+
         if (data.stage !== previousStageRef.current) {
           await transitionToNextStage({
             stage: data.stage,
@@ -161,8 +163,14 @@ function TranscodeProgress({
       }
     };
 
+    eventSource.addEventListener("done", (event) => {
+      const data = JSON.parse(event.data);
+      console.log("Done event received", data);
+      eventSource.close(); // Gracefully close connection from client
+    });
+
     eventSource.onerror = (error) => {
-      // console.error("SSE Error:", error);
+      console.log("SSE Error:", error);
       eventSource.close();
       setProgressData((prev) => ({
         ...prev,
