@@ -42,9 +42,7 @@ const ProcessedVideoList = ({ isComplete }: { isComplete: boolean }) => {
 
   const handleCopy = async (url: string, id: string) => {
     try {
-      console.log("Copying URL:", url);
-
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_R2_URL}/${url}`);
       setCopiedId(id);
       toast({
         title: "URL copied to clipboard",

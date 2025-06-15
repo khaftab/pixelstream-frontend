@@ -163,13 +163,19 @@ function TranscodeProgress({
       }
     };
 
+    eventSource.addEventListener("done", (event) => {
+      const data = JSON.parse(event.data);
+      console.log("Done event received", data);
+      eventSource.close(); // Gracefully close connection from client
+    });
+
     eventSource.onerror = (error) => {
-      // this triggered when the SSE connection fails or the server terminates the connection even without any error. Since, the server closes the connection when the process is done, we can ignore this error.
+      // this triggered when the SSE connection fails or the server terminates the connection even without error. That's why we are not terminating connection from server instead, sends a "done" event, to allow client to close connection.
       eventSource.close();
-      // setProgressData((prev) => ({
-      //   ...prev,
-      //   status: "failed",
-      // }));
+      setProgressData((prev) => ({
+        ...prev,
+        status: "failed",
+      }));
     };
 
     return () => {
@@ -214,7 +220,7 @@ function TranscodeProgress({
                   onClick={() => {
                     const filename = lastValidFilename.current;
                     navigator.clipboard.writeText(
-                      `https://pub-edb9d66a566a409ab1bf346a0f47bb12.r2.dev/uploads/${user?.id}/${filename}/master.m3u8`
+                      `${process.env.NEXT_PUBLIC_R2_URL}/uploads/${user?.id}/${filename}/master.m3u8`
                     );
                     toast({
                       title: "URL copied to clipboard",
